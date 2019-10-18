@@ -1,4 +1,4 @@
-package co.elastic;
+package jpountz;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

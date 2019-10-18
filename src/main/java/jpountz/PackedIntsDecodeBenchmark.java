@@ -1,4 +1,4 @@
-package co.elastic;
+package jpountz;
 
 import java.util.concurrent.TimeUnit;
 
