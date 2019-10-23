@@ -1,81 +1,73 @@
-Benchmark                                                 (bitsPerValue)   Mode  Cnt   Score   Error   Units
-PackedIntsDecodeBenchmark.decodeSIMD                                   1  thrpt    5  12.848 ± 0.192  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   2  thrpt    5  16.465 ± 0.244  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   3  thrpt    5  28.011 ± 0.621  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   4  thrpt    5  30.333 ± 0.758  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   5  thrpt    5  24.379 ± 1.474  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   6  thrpt    5  24.547 ± 1.295  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   7  thrpt    5  19.255 ± 1.173  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   8  thrpt    5  22.208 ± 0.429  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                   9  thrpt    5  18.316 ± 0.759  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  10  thrpt    5  19.103 ± 0.979  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  11  thrpt    5  15.556 ± 1.902  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  12  thrpt    5  17.350 ± 0.524  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  13  thrpt    5  12.942 ± 0.055  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  14  thrpt    5  13.184 ± 0.177  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  15  thrpt    5  12.898 ± 0.138  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD                                  16  thrpt    5  14.856 ± 0.168  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  1  thrpt    5  21.677 ±  0.458  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  2  thrpt    5  60.624 ±  1.285  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  3  thrpt    5  46.418 ±  1.337  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  4  thrpt    5  43.209 ±  1.424  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  5  thrpt    5  37.546 ±  0.129  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  6  thrpt    5  35.391 ±  1.047  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  7  thrpt    5  26.793 ±  1.110  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  8  thrpt    5  28.811 ±  0.877  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                  9  thrpt    5  21.815 ±  0.379  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 10  thrpt    5  24.806 ±  0.237  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 11  thrpt    5  18.040 ±  0.625  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 12  thrpt    5  22.019 ±  2.051  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 13  thrpt    5  15.883 ±  0.144  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 14  thrpt    5  19.835 ±  0.275  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 15  thrpt    5  14.033 ±  0.232  ops/us
-PackedIntsDecodeBenchmark.decodeSIMD2                                 16  thrpt    5  20.677 ±  1.497  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   1  thrpt    5  11.579 ± 0.132  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   2  thrpt    5  12.686 ± 0.117  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   3  thrpt    5  12.452 ± 3.353  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   4  thrpt    5  15.501 ± 0.181  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   5  thrpt    5  11.294 ± 0.459  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   6  thrpt    5  12.260 ± 0.989  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   7  thrpt    5   9.724 ± 0.067  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   8  thrpt    5  11.745 ± 2.162  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                   9  thrpt    5   7.581 ± 0.085  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  10  thrpt    5   7.944 ± 0.077  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  11  thrpt    5   7.274 ± 1.503  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  12  thrpt    5  10.002 ± 0.295  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  13  thrpt    5   6.909 ± 0.138  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  14  thrpt    5   6.636 ± 0.119  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  15  thrpt    5   6.414 ± 0.197  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToHeapLongBuffer                  16  thrpt    5   8.416 ± 0.227  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               1  thrpt    5  10.507 ± 0.392  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               2  thrpt    5  11.337 ± 0.245  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               3  thrpt    5  11.984 ± 0.209  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               4  thrpt    5  12.181 ± 0.119  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               5  thrpt    5  10.601 ± 0.245  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               6  thrpt    5  12.883 ± 0.274  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               7  thrpt    5   9.649 ± 0.143  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               8  thrpt    5  12.084 ± 0.601  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer               9  thrpt    5   8.326 ± 0.060  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              10  thrpt    5   8.623 ± 0.104  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              11  thrpt    5   8.171 ± 0.044  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              12  thrpt    5  10.998 ± 0.404  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              13  thrpt    5   7.590 ± 1.931  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              14  thrpt    5   7.484 ± 0.056  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              15  thrpt    5   7.634 ± 0.210  ops/us
-PackedIntsDecodeBenchmark.decodeSIMDToLEDirectLongBuffer              16  thrpt    5  10.070 ± 2.175  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 1  thrpt    5   7.378 ± 0.199  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 2  thrpt    5  10.468 ± 0.047  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 3  thrpt    5  10.539 ± 0.162  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 4  thrpt    5   9.662 ± 0.094  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 5  thrpt    5   9.591 ± 0.097  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 6  thrpt    5  17.096 ± 0.158  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 7  thrpt    5  15.161 ± 0.136  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 8  thrpt    5  17.181 ± 0.407  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                 9  thrpt    5  15.268 ± 0.145  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                10  thrpt    5  14.675 ± 0.095  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                11  thrpt    5  13.754 ± 0.129  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                12  thrpt    5  14.930 ± 2.576  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                13  thrpt    5  12.943 ± 0.178  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                14  thrpt    5  12.416 ± 0.248  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                15  thrpt    5  13.007 ± 0.714  ops/us
-PackedIntsDecodeBenchmark.decodeSimple                                16  thrpt    5  12.787 ± 0.759  ops/us
+Benchmark                                       (bitsPerValue)  (byteOrder)   Mode  Cnt   Score   Error   Units
+PackedIntsDecodeBenchmark.decodeManualSIMD                   1           LE  thrpt    5  22.892 ± 0.084  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   1           BE  thrpt    5  22.650 ± 0.142  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   2           LE  thrpt    5  21.819 ± 0.912  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   2           BE  thrpt    5  21.454 ± 0.345  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   3           LE  thrpt    5  20.463 ± 0.378  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   3           BE  thrpt    5  19.423 ± 0.158  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   4           LE  thrpt    5  19.619 ± 0.278  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   4           BE  thrpt    5  18.335 ± 0.534  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   5           LE  thrpt    5  16.713 ± 0.726  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   5           BE  thrpt    5  17.025 ± 0.615  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   6           LE  thrpt    5  17.738 ± 0.409  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   6           BE  thrpt    5  17.039 ± 0.859  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   8           LE  thrpt    5  22.245 ± 0.691  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                   8           BE  thrpt    5  13.611 ± 0.108  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                  10           LE  thrpt    5  16.553 ± 3.026  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                  10           BE  thrpt    5  11.066 ± 0.390  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                  16           LE  thrpt    5  25.180 ± 0.523  ops/us
+PackedIntsDecodeBenchmark.decodeManualSIMD                  16           BE  thrpt    5  13.168 ± 0.217  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               1           LE  thrpt    5  12.958 ± 0.234  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               1           BE  thrpt    5  12.924 ± 0.075  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               2           LE  thrpt    5  13.026 ± 0.085  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               2           BE  thrpt    5  13.246 ± 0.070  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               3           LE  thrpt    5  12.370 ± 0.360  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               3           BE  thrpt    5  12.459 ± 0.612  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               4           LE  thrpt    5  14.321 ± 0.381  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               4           BE  thrpt    5  14.496 ± 0.252  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               5           LE  thrpt    5  11.238 ± 0.369  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               5           BE  thrpt    5  11.263 ± 0.432  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               6           LE  thrpt    5   9.840 ± 0.736  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               6           BE  thrpt    5   9.863 ± 0.243  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               8           LE  thrpt    5  16.621 ± 0.650  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes               8           BE  thrpt    5  16.840 ± 0.428  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes              10           LE  thrpt    5   8.935 ± 0.089  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes              10           BE  thrpt    5   8.690 ± 0.356  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes              16           LE  thrpt    5  13.096 ± 0.151  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromBytes              16           BE  thrpt    5  13.149 ± 0.166  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               1           LE  thrpt    5   7.326 ± 0.264  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               1           BE  thrpt    5   7.317 ± 0.459  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               2           LE  thrpt    5   8.964 ± 0.103  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               2           BE  thrpt    5   8.947 ± 0.054  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               3           LE  thrpt    5   9.254 ± 0.035  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               3           BE  thrpt    5   9.000 ± 0.501  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               4           LE  thrpt    5   7.922 ± 0.281  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               4           BE  thrpt    5   7.898 ± 0.098  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               5           LE  thrpt    5   8.429 ± 0.131  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               5           BE  thrpt    5   8.387 ± 0.121  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               6           LE  thrpt    5  15.075 ± 0.502  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               6           BE  thrpt    5  13.237 ± 0.307  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               8           LE  thrpt    5  13.481 ± 0.710  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs               8           BE  thrpt    5  13.338 ± 0.233  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs              10           LE  thrpt    5  13.074 ± 0.171  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs              10           BE  thrpt    5  11.927 ± 0.341  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs              16           LE  thrpt    5  10.364 ± 0.636  ops/us
+PackedIntsDecodeBenchmark.decodeNaiveFromLongs              16           BE  thrpt    5  10.359 ± 0.063  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 1           LE  thrpt    5  14.655 ± 0.187  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 1           BE  thrpt    5  10.620 ± 0.064  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 2           LE  thrpt    5  15.808 ± 0.196  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 2           BE  thrpt    5  11.141 ± 0.251  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 3           LE  thrpt    5  16.051 ± 0.131  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 3           BE  thrpt    5  10.893 ± 0.140  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 4           LE  thrpt    5  18.063 ± 0.179  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 4           BE  thrpt    5  11.421 ± 0.906  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 5           LE  thrpt    5  16.100 ± 0.198  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 5           BE  thrpt    5   9.133 ± 0.359  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 6           LE  thrpt    5  16.563 ± 0.235  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 6           BE  thrpt    5  10.392 ± 0.172  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 8           LE  thrpt    5  18.011 ± 1.193  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                 8           BE  thrpt    5  11.143 ± 1.135  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                10           LE  thrpt    5  15.818 ± 0.324  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                10           BE  thrpt    5   9.785 ± 0.480  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                16           LE  thrpt    5  21.574 ± 0.104  ops/us
+PackedIntsDecodeBenchmark.decodePureJavaSIMD                16           BE  thrpt    5  10.257 ± 0.333  ops/us

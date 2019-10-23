@@ -16,71 +16,27 @@ import org.openjdk.jmh.infra.Blackhole;
 public class PackedIntsDecodeBenchmark {
 
   @Benchmark
-  public void decodeSimple(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    SimpleDecoder.decode(state.bitsPerValue, state.input, state.output);
-    bh.consume(state.output);
+  public void decodeNaiveFromBytes(PackedIntsDecodeState state, Blackhole bh) {
+    NaiveByteDecoder.decode(state.bitsPerValue, state.input, state.tmpBytes, state.outputInts);
+    bh.consume(state.outputInts);
   }
 
   @Benchmark
-  public void decodeSIMD(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    SIMDDecoder.decode(state.bitsPerValue, state.input, state.output);
-    bh.consume(state.output);
+  public void decodeNaiveFromLongs(PackedIntsDecodeState state, Blackhole bh) {
+    NaiveLongDecoder.decode(state.bitsPerValue, state.input, state.outputLongs);
+    bh.consume(state.outputLongs);
   }
 
   @Benchmark
-  public void decodeSIMD2(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    SIMDDecoder2.decode(state.bitsPerValue, state.input, state.output);
-    bh.consume(state.output);
+  public void decodePureJavaSIMD(PackedIntsDecodeState state, Blackhole bh) {
+    PureJavaSIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpInts, state.outputInts);
+    bh.consume(state.outputInts);
   }
 
   @Benchmark
-  public void decodeSIMDToHeapByteBuffer(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    state.outputHeapBB.position(0);
-    SIMDDecoderToByteBuffer.decode(state.bitsPerValue, state.input, state.outputHeapBB);
-    bh.consume(state.outputHeapBB);
+  public void decodeManualSIMD(PackedIntsDecodeState state, Blackhole bh) {
+    ManualSIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpLongs, state.outputLongs);
+    bh.consume(state.outputLongs);
   }
 
-  @Benchmark
-  public void decodeSIMDToDirectByteBuffer(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    state.outputDirectBB.position(0);
-    SIMDDecoderToByteBuffer.decode(state.bitsPerValue, state.input, state.outputDirectBB);
-    bh.consume(state.outputDirectBB);
-  }
-
-  @Benchmark
-  public void decodeSIMDToLEHeapByteBuffer(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    state.outputLEHeapBB.position(0);
-    SIMDDecoderToByteBuffer.decode(state.bitsPerValue, state.input, state.outputLEHeapBB);
-    bh.consume(state.outputLEHeapBB);
-  }
-
-  @Benchmark
-  public void decodeSIMDToLEDirectByteBuffer(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    state.outputLEDirectBB.position(0);
-    SIMDDecoderToByteBuffer.decode(state.bitsPerValue, state.input, state.outputLEDirectBB);
-    bh.consume(state.outputLEDirectBB);
-  }
-
-  @Benchmark
-  public void decodeSIMDToHeapLongBuffer(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    state.outputHeapBBasLB.position(0);
-    SIMDDecoderToLongBuffer.decode(state.bitsPerValue, state.input, state.outputHeapBBasLB);
-    bh.consume(state.outputHeapBBasLB);
-  }
-
-  @Benchmark
-  public void decodeSIMDToLEDirectLongBuffer(PackedIntsDecodeState state, Blackhole bh) {
-    state.input.position(0);
-    state.outputLEDirectBBasLB.position(0);
-    SIMDDecoderToLongBuffer.decode(state.bitsPerValue, state.input, state.outputLEDirectBBasLB);
-    bh.consume(state.outputLEDirectBBasLB);
-  }
 }

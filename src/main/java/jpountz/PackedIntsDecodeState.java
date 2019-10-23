@@ -1,8 +1,13 @@
 package jpountz;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.LongBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileChannel.MapMode;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Random;
 
 import org.openjdk.jmh.annotations.Level;
@@ -10,45 +15,67 @@ import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
 
 @State(Scope.Benchmark)
 public class PackedIntsDecodeState {
 
-  // Read data from a ByteBuffer 
+  private FileChannel channel;
   ByteBuffer input;
-  long[] output;
-  ByteBuffer outputHeapBB;
-  ByteBuffer outputLEHeapBB;
-  ByteBuffer outputDirectBB;
-  ByteBuffer outputLEDirectBB;
-  LongBuffer outputHeapBBasLB;
-  LongBuffer outputLEDirectBBasLB;
 
-  @Param({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" })
+  byte[] tmpBytes;
+  int[] tmpInts;
+  long[] tmpLongs;
+
+  int[] outputInts;
+  long[] outputLongs;
+
+  // Bits per values that can be handled by all decoders
+  @Param({ "1", "2", "3", "4", "5", "6", "8", "10", "16" })
   int bitsPerValue;
 
+  @Param({"LE", "BE"})
+  String byteOrder;
+
   @Setup(Level.Trial)
-  public void init() {
-    // Use a Big Endian direct ByteBuffer as the input, which should be similar
-    // enough to reading from a MMapDirectory.
-    input = ByteBuffer.allocateDirect(128 * Integer.BYTES);
-    Random r = new Random(0);
-    byte[] b = new byte[128 * Integer.BYTES];
-    r.nextBytes(b);
-    input.put(b);
+  public void setupTrial() throws IOException {
+    Path path = Files.createTempFile("PackedIntsDecodeState", ".bench");
+    try (FileChannel channel = FileChannel.open(path, StandardOpenOption.APPEND, StandardOpenOption.WRITE)) {
+      byte[] data = new byte[128 * Integer.BYTES];
+      new Random(0).nextBytes(data);
+      channel.write(ByteBuffer.wrap(data));
+    }
+    channel = FileChannel.open(path, StandardOpenOption.READ);
+    input = channel.map(MapMode.READ_ONLY, 0, 128 * Integer.BYTES);
+    if ("BE".equals(byteOrder)) {
+      input.order(ByteOrder.BIG_ENDIAN);
+    } else if ("LE".equals(byteOrder)) {
+      input.order(ByteOrder.LITTLE_ENDIAN);
+    } else {
+      throw new IllegalArgumentException();
+    }
 
-    output = new long[128];
+    // Some of these arrays are larger than 128 because some decoders need some padding bytes.
+    tmpBytes = new byte[128 * Integer.BYTES];
+    tmpInts = new int[256];
+    tmpLongs = new long[256];
 
-    outputHeapBB = ByteBuffer.allocate(128 * 4);
-    outputLEHeapBB = ByteBuffer.allocate(128 * 4).order(ByteOrder.LITTLE_ENDIAN);
+    outputInts = new int[256];
+    outputLongs = new long[256];
+  }
 
-    outputDirectBB = ByteBuffer.allocateDirect(128 * 4);
-    outputLEDirectBB = ByteBuffer.allocateDirect(128 * 4).order(ByteOrder.LITTLE_ENDIAN);
+  @Setup(Level.Invocation)
+  public void setupInvocation() {
+    // Reset the position of the buffer
+    input.position(0);
+  }
 
-    // Don't create a direct long buffer but a view of a ByteBuffer so that its bytes
-    // could be interpreted as ints as well via asIntBuffer().
-    outputHeapBBasLB = outputHeapBB.asLongBuffer();
-    outputLEDirectBBasLB = outputLEDirectBB.asLongBuffer();
+  @TearDown(Level.Trial)
+  public void tearDownTrial() throws IOException {
+    input = null;
+    if (channel != null) {
+      channel.close();
+    }
   }
 
 }
