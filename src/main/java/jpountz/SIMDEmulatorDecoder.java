@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
  * This takes the same idea as SIMD decoding of postings lists by decoding two
  * ints, four shorts or eight bytes at once by manipulating longs.
  */
-public class ManualSIMDDecoder {
+public class SIMDEmulatorDecoder {
 
   private static final long MASK8_1 = mask8(1);
   private static final long MASK8_2 = mask8(2);

@@ -28,14 +28,14 @@ public class PackedIntsDecodeBenchmark {
   }
 
   @Benchmark
-  public void decodePureJavaSIMD(PackedIntsDecodeState state, Blackhole bh) {
-    PureJavaSIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpInts, state.outputInts);
+  public void decodeC2SIMD(PackedIntsDecodeState state, Blackhole bh) {
+    C2SIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpInts, state.outputInts);
     bh.consume(state.outputInts);
   }
 
   @Benchmark
-  public void decodeManualSIMD(PackedIntsDecodeState state, Blackhole bh) {
-    ManualSIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpLongs, state.outputLongs);
+  public void decodeSIMDEmulator(PackedIntsDecodeState state, Blackhole bh) {
+    SIMDEmulatorDecoder.decode(state.bitsPerValue, state.input, state.tmpLongs, state.outputLongs);
     bh.consume(state.outputLongs);
   }
 
