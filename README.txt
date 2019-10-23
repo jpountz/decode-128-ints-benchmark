@@ -1,3 +1,5 @@
+What is the fastest way to read 128 packed integers from a ByteBuffer?
+
 Benchmark                                       (bitsPerValue)  (byteOrder)   Mode  Cnt   Score   Error   Units
 PackedIntsDecodeBenchmark.decodeManualSIMD                   1           LE  thrpt    5  22.892 ± 0.084  ops/us
 PackedIntsDecodeBenchmark.decodeManualSIMD                   1           BE  thrpt    5  22.650 ± 0.142  ops/us
