@@ -16,6 +16,12 @@ import org.openjdk.jmh.infra.Blackhole;
 public class PackedIntsDecodeBenchmark {
 
   @Benchmark
+  public void readLongs(PackedIntsDecodeState state, Blackhole bh) {
+    NoopDecoder.decode(state.bitsPerValue, state.input, state.outputLongs);
+    bh.consume(state.outputLongs);
+  }
+
+  @Benchmark
   public void decodeNaiveFromBytes(PackedIntsDecodeState state, Blackhole bh) {
     NaiveByteDecoder.decode(state.bitsPerValue, state.input, state.tmpBytes, state.outputInts);
     bh.consume(state.outputInts);
@@ -28,14 +34,14 @@ public class PackedIntsDecodeBenchmark {
   }
 
   @Benchmark
-  public void decodeC2SIMD(PackedIntsDecodeState state, Blackhole bh) {
-    C2SIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpInts, state.outputInts);
+  public void decodeSimpleSIMD(PackedIntsDecodeState state, Blackhole bh) {
+    SimpleSIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpInts, state.outputInts);
     bh.consume(state.outputInts);
   }
 
   @Benchmark
-  public void decodeSIMDEmulator(PackedIntsDecodeState state, Blackhole bh) {
-    SIMDEmulatorDecoder.decode(state.bitsPerValue, state.input, state.tmpLongs, state.outputLongs);
+  public void decodeSIMD(PackedIntsDecodeState state, Blackhole bh) {
+    SIMDDecoder.decode(state.bitsPerValue, state.input, state.tmpLongs, state.outputLongs);
     bh.consume(state.outputLongs);
   }
 

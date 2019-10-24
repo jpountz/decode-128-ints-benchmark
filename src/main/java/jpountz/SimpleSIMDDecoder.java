@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
  * Decoder that only relies on how Java's C2 compiler recognizes some patterns
  * to generate SIMD instructions. 
  */
-public class C2SIMDDecoder {
+public class SimpleSIMDDecoder {
 
   /**
    * Decode 128 integers into {@code ints}.
