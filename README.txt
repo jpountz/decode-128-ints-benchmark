@@ -158,3 +158,110 @@ PackedIntsDecodeBenchmark.readLongs                         15           LE  thr
 PackedIntsDecodeBenchmark.readLongs                         15           BE  thrpt    5  14.222 ± 0.105  ops/us
 PackedIntsDecodeBenchmark.readLongs                         16           LE  thrpt    5  26.638 ± 0.452  ops/us
 PackedIntsDecodeBenchmark.readLongs                         16           BE  thrpt    5  13.906 ± 0.604  ops/us
+
+Now what about decoding and computing a prefix sum of the decoded values?
+
+ * `naiveDecodeAndPrefixSum` uses the fastest SIMD decoding from above and then
+   runs a prefix sum with a for loop
+ * `naiveDecodeAndUnrolledPrefixSum` uses the fastest SIMD decoding from above
+   and then runs an unrolled prefix sum
+ * `mergeDecodeAndPrefixSum` runs the prefix sum within the decoding logic, when
+   longs are still storing 2 packed integers
+
+Benchmark                                                       (bitsPerValue)  (byteOrder)   Mode  Cnt   Score   Error   Units
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       1           LE  thrpt    5  13.666 ± 0.169  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       1           BE  thrpt    5  10.393 ± 0.092  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       2           LE  thrpt    5  13.725 ± 0.347  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       2           BE  thrpt    5  10.348 ± 0.706  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       3           LE  thrpt    5  13.526 ± 0.068  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       3           BE  thrpt    5  10.132 ± 0.576  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       4           LE  thrpt    5  13.916 ± 0.167  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       4           BE  thrpt    5  10.294 ± 0.101  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       5           LE  thrpt    5  13.467 ± 0.219  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       5           BE  thrpt    5  10.009 ± 0.106  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       6           LE  thrpt    5  13.171 ± 0.142  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       6           BE  thrpt    5   9.686 ± 1.134  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       7           LE  thrpt    5  13.147 ± 0.101  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       7           BE  thrpt    5   9.730 ± 0.090  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       8           LE  thrpt    5  13.941 ± 0.179  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       8           BE  thrpt    5  10.497 ± 0.027  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       9           LE  thrpt    5  12.419 ± 0.225  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                       9           BE  thrpt    5   9.032 ± 0.113  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      10           LE  thrpt    5  11.492 ± 0.850  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      10           BE  thrpt    5   8.643 ± 0.139  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      11           LE  thrpt    5  11.742 ± 0.524  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      11           BE  thrpt    5   9.043 ± 0.160  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      12           LE  thrpt    5  12.243 ± 0.181  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      12           BE  thrpt    5   8.888 ± 0.217  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      13           LE  thrpt    5  11.515 ± 0.481  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      13           BE  thrpt    5   8.822 ± 0.230  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      14           LE  thrpt    5  11.547 ± 1.114  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      14           BE  thrpt    5   8.611 ± 0.147  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      15           LE  thrpt    5  12.200 ± 0.131  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      15           BE  thrpt    5   8.627 ± 0.118  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      16           LE  thrpt    5  15.135 ± 0.271  ops/us
+PackedIntsDeltaDecodeBenchmark.mergeDecodeAndPrefixSum                      16           BE  thrpt    5  10.038 ± 0.063  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       1           LE  thrpt    5  10.027 ± 0.047  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       1           BE  thrpt    5   8.210 ± 0.125  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       2           LE  thrpt    5  10.168 ± 0.128  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       2           BE  thrpt    5   8.362 ± 0.131  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       3           LE  thrpt    5   9.969 ± 0.347  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       3           BE  thrpt    5   8.156 ± 0.288  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       4           LE  thrpt    5  10.172 ± 0.324  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       4           BE  thrpt    5   8.343 ± 0.057  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       5           LE  thrpt    5   9.850 ± 0.200  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       5           BE  thrpt    5   8.009 ± 0.087  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       6           LE  thrpt    5  10.014 ± 0.182  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       6           BE  thrpt    5   7.978 ± 0.075  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       7           LE  thrpt    5   9.834 ± 0.076  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       7           BE  thrpt    5   7.828 ± 0.056  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       8           LE  thrpt    5  10.504 ± 0.224  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       8           BE  thrpt    5   8.380 ± 0.408  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       9           LE  thrpt    5   9.477 ± 0.131  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                       9           BE  thrpt    5   7.509 ± 0.071  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      10           LE  thrpt    5   9.026 ± 1.915  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      10           BE  thrpt    5   7.212 ± 0.034  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      11           LE  thrpt    5   9.402 ± 0.051  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      11           BE  thrpt    5   7.449 ± 0.148  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      12           LE  thrpt    5   9.417 ± 0.055  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      12           BE  thrpt    5   7.228 ± 0.035  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      13           LE  thrpt    5   9.328 ± 0.102  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      13           BE  thrpt    5   7.289 ± 0.043  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      14           LE  thrpt    5   9.394 ± 0.127  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      14           BE  thrpt    5   7.216 ± 0.106  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      15           LE  thrpt    5   9.299 ± 0.127  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      15           BE  thrpt    5   7.141 ± 0.042  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      16           LE  thrpt    5  10.701 ± 0.123  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndPrefixSum                      16           BE  thrpt    5   8.282 ± 0.092  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               1           LE  thrpt    5  12.181 ± 0.124  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               1           BE  thrpt    5   9.752 ± 0.280  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               2           LE  thrpt    5  12.341 ± 0.141  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               2           BE  thrpt    5   9.806 ± 0.203  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               3           LE  thrpt    5  12.221 ± 0.110  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               3           BE  thrpt    5   9.593 ± 0.054  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               4           LE  thrpt    5  12.557 ± 0.165  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               4           BE  thrpt    5   9.808 ± 0.077  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               5           LE  thrpt    5  12.112 ± 0.162  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               5           BE  thrpt    5   9.402 ± 0.117  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               6           LE  thrpt    5  12.095 ± 0.228  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               6           BE  thrpt    5   9.291 ± 0.203  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               7           LE  thrpt    5  11.803 ± 0.080  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               7           BE  thrpt    5   9.419 ± 0.072  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               8           LE  thrpt    5  12.861 ± 0.135  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               8           BE  thrpt    5   9.786 ± 0.234  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               9           LE  thrpt    5  11.573 ± 0.136  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum               9           BE  thrpt    5   8.700 ± 0.094  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              10           LE  thrpt    5  11.113 ± 0.205  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              10           BE  thrpt    5   8.315 ± 0.025  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              11           LE  thrpt    5  11.300 ± 0.125  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              11           BE  thrpt    5   8.424 ± 0.182  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              12           LE  thrpt    5  11.385 ± 0.081  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              12           BE  thrpt    5   8.370 ± 0.029  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              13           LE  thrpt    5  10.926 ± 0.114  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              13           BE  thrpt    5   8.444 ± 0.083  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              14           LE  thrpt    5  11.164 ± 0.078  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              14           BE  thrpt    5   8.106 ± 0.020  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              15           LE  thrpt    5  11.026 ± 0.045  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              15           BE  thrpt    5   8.233 ± 0.099  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              16           LE  thrpt    5  13.869 ± 0.079  ops/us
+PackedIntsDeltaDecodeBenchmark.naiveDecodeAndUnrolledPrefixSum              16           BE  thrpt    5   9.722 ± 0.045  ops/us
